@@ -26,7 +26,7 @@ class Models():
         return score
 
     def Stock_model(self,day,month):
-        smodel=joblib.load('Saved_model/final_Model.pkl')
+        smodel=pickle.load(open('Saved_model/final_Model.pkl','rb'))
         return smodel.predict([[int(day),int(month)]])[0]
         
 
