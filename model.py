@@ -2,7 +2,8 @@ import nltk
 nltk.download('vader_lexicon')
 nltk.download('punkt')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import joblib
+import pandas as pd
+from sklearn.naive_bayes import GaussianNB
 class Models():
     def __init__(self):
         pass
@@ -26,7 +27,13 @@ class Models():
         return score
 
     def Stock_model(self,day,month):
-        smodel=pickle.load(open('final_Model.sav','rb'))
+        df=pd.read_csv('modeling_data.csv',index_col = 0)
+        df["day"] = df['Date'].map(lambda x: pd.to_datetime(x).day)
+        df["month"] = df['Date'].map(lambda x: pd.to_datetime(x).month)
+        X=df[['day','month']]
+        Y=df["SameDay_Binary"]
+        smodel = GaussianNB()
+        smodel.fit(X,Y)
         return smodel.predict([[int(day),int(month)]])[0]
         
 
