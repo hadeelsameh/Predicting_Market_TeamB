@@ -4,7 +4,6 @@ scikit_learn==1.0
 gunicorn==20.1.0
 itsdangerous==1.1.0
 Jinja2==2.10.3
-joblib==0.13.2
 Werkzeug==0.16.0
 pickleshare==0.7.5
 pandas==1.1.5
