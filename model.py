@@ -2,7 +2,7 @@ import nltk
 nltk.download('vader_lexicon')
 nltk.download('punkt')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import pickle
+import joblib
 class Models():
     def __init__(self):
         pass
@@ -26,7 +26,7 @@ class Models():
         return score
 
     def Stock_model(self,day,month):
-        smodel=pickle.load(open('Saved_model/final_Model.sav','rb'))
+        smodel=joblib.load('Saved_model/final_Model.pkl')
         return smodel.predict([[int(day),int(month)]])[0]
         
 
