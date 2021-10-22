@@ -1,7 +1,6 @@
 import nltk
 nltk.download('vader_lexicon')
 nltk.download('punkt')
-from sklearn.externals import joblib
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pickle
 class Models():
